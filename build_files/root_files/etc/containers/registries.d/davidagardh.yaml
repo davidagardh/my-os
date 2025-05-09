@@ -1,0 +1,4 @@
+docker:
+  ghcr.io/davidagardh:
+    use-sigstore-attachments: true
+
