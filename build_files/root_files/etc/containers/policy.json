@@ -21,6 +21,13 @@
                 }
             ]
         },
+        "containers-storage": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
         "docker-daemon": {
             "": [
                 {
