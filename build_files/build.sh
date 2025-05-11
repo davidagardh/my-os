@@ -7,7 +7,7 @@ mkdir /var/opt /var/roothome
 ### Install packages
 
 # Installs packages from fedora repos
-dnf5 install -y tmux btrbk NetworkManager-l2tp-gnome distrobox
+dnf5 install -y tmux btrbk NetworkManager-l2tp-gnome distrobox zsh lm_sensors wl-clipboard
 
 /ctx/1password.sh
 
