@@ -6,7 +6,7 @@
     ],
     "transports": {
         "docker": {
-            "ghcr.io/davidagardh": [
+            "quay.io/davidagardh/my-os": [
                 {
                     "type": "sigstoreSigned",
                     "keyPath": "/etc/pki/davidagardh-cosign.pub",
