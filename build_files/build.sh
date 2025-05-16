@@ -12,11 +12,14 @@ dnf5 install -y \
 	btrbk \
 	NetworkManager-l2tp-gnome \
 	distrobox \
-	zsh \
+	fish \
 	lm_sensors \
 	wl-clipboard \
 	virt-manager \
+	vim \
 	fzf
+
+dnf5 remove -y toolbox
 
 /ctx/1password.sh
 
