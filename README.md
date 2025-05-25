@@ -30,6 +30,10 @@ This file defines the base image and operations used to customize the selected i
 
 This bash script is run by the containerfile as part of the build process and does most of the customizations, including installing packages and modifying config files. It also calls out to other scripts in `build_files/`
 
+## build_files/root_files
+
+The contents of `root_files` is copied into the image.
+
 ## GitHub Actions Workflow
 
 ### build.yml
