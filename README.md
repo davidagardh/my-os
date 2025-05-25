@@ -11,13 +11,13 @@ A GitHub workflow builds a new version of the container image every night and on
 Start from a working installation of Silverblue (or similar distro that has bootc). Rebasing to this repo is done in two steps. The first step installs the image without verifying signatures, because those signatures would not be trusted. The second step enables image signature verification.
 
 ```bash
-bootc switch ghcr.io/davidagardh/atomic-test:latest
+bootc switch quay.io/davidagardh/atomic-test:latest
 ```
 
 Reboot
 
 ```bash
-bootc switch ghcr.io/davidagardh/atomic-test:latest --enforce-container-sigpolicy
+bootc switch quay.io/davidagardh/atomic-test:latest --enforce-container-sigpolicy
 ```
 
 # Understanding the repo
@@ -38,7 +38,7 @@ The contents of `root_files` is copied into the image.
 
 ### build.yml
 
-This workflow creates custom OCI image and publishes it to the GitHub Container Registry (GHCR). Any image metadata is set here, including the name which by default is the same as the repo name.
+This workflow creates custom OCI image and publishes it to the quay.io container registry. Any image metadata is set here, including the name which by default is the same as the repo name.
 
 ### Container Signing
 
