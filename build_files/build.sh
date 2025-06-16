@@ -27,5 +27,5 @@ cp /ctx/cosign.pub /etc/pki/davidagardh-cosign.pub
 rsync -r /ctx/root_files/ /
 rm /etc/profile.d/nano-default-editor.sh
 
-rm -rf /var/roothome/
+/ctx/lint-fixes.sh
 
