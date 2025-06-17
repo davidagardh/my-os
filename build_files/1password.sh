@@ -9,7 +9,7 @@ baseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch
 enabled=1
 gpgcheck=1
 repo_gpgcheck=1
-gpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" 
+gpgkey=https://downloads.1password.com/linux/keys/1password.asc
 EOF
 
 dnf5 install -y 1password-cli 1password
