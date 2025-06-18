@@ -1,0 +1,35 @@
+From edaaaf26fe8391dcaf522bae3e36619e83e73b07 Mon Sep 17 00:00:00 2001
+From: Fred Fu <moonsolo@gmail.com>
+Date: Thu, 30 Jan 2025 11:35:09 -0500
+Subject: [PATCH] make the default fish_prompt an autoloaded function
+
+closes #1671
+---
+ distrobox-init | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/distrobox-init b/distrobox-init
+index 181e1ee..d94dde8 100755
+--- a/distrobox-init
++++ b/distrobox-init
+@@ -2151,10 +2151,13 @@ if status --is-interactive
+ 		passwd && rm -f /var/tmp/.\$USER.passwd.initialize
+ 		trap - INT
+ 	end
+-	function fish_prompt
+-		set current_dir (basename (pwd))
+-		echo "📦[\$USER@\$CONTAINER_ID \$current_dir]> "
+-	end
++end
++EOF
++	mkdir -p /etc/fish/functions
++	cat << EOF > /etc/fish/functions/fish_prompt.fish
++function fish_prompt
++	set current_dir (basename (pwd))
++	echo "📦[\$USER@\$CONTAINER_ID \$current_dir]> "
+ end
+ EOF
+ fi
+-- 
+2.49.0
+
