@@ -8,7 +8,7 @@ echo 'g qat 995' > /usr/lib/sysusers.d/qat.conf
 
 rm -rf /var/lib/ipsec /var/lib/iscsi
 rm -rf /var/roothome/
-rm -rf /var/lib/rpm-state/
+rm -rf /var/lib/rpm-state/ /var/lib/dnf/
 
 cat << EOF > /usr/lib/tmpfiles.d/libvirt.conf
 d /var/lib/libvirt 0755 root root - -
