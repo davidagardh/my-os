@@ -1,0 +1,3 @@
+[toolbox]
+toolbx ansible_connection=podman
+

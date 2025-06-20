@@ -9,6 +9,7 @@ mkdir /var/opt /var/roothome
 # Installs packages from fedora repos
 dnf5 install -y \
 	tmux \
+	ansible-core \
 	btrbk \
 	NetworkManager-l2tp-gnome \
 	distrobox \
