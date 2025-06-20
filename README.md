@@ -44,3 +44,5 @@ This workflow creates custom OCI image and publishes it to the quay.io container
 
 Images built with the GitHub are signed with cosign using a key pair. The cosign public key is stored in the repo and included in every built image. The private key is stored as a secret in GitHub.
 
+To sign a manually built image, [install cosign](https://docs.sigstore.dev/cosign/system_config/installation/) and run `cosign sign --key cosign.key quay.io/davidagardh/my-os:{latest,latest.20250620,20250620}`.
+
