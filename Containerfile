@@ -29,3 +29,5 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
 ### LINTING
 ## Verify final image and contents are correct.
 RUN bootc container lint
+
+LABEL quay.expires-after=30d
