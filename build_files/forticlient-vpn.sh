@@ -4,16 +4,11 @@ dnf5 install -y forticlient
 
 cp -r /opt/forticlient /usr/share/
 rm -r /opt/forticlient
-sed -i 's,/opt/,/usr/share/,' \
-	/lib/systemd/system/forticlient.service \
-	/usr/share/applications/forticlient-register.desktop \
-	/usr/share/applications/forticlient.desktop \
-	/usr/share/polkit-1/actions/org.fortinet.fortitray.policy \
-	/usr/share/polkit-1/actions/org.fortinet.forticlient.policy
+grep -Rl '/opt/forticlient' '/usr/share/forticlient' | xargs sed -i 's,/opt/forticlient,/usr/share/forticlient,g'
 
 cat >/usr/lib/tmpfiles.d/forticlient.conf <<EOF
 d /var/log/forticlient 0755 root root 5d -
 d /var/lib/forticlient 0755 root root - -
-f /var/lib/forticlient/config.db 0600 root root - -
 EOF
+rm /var/lib/forticlient/config.db
 
