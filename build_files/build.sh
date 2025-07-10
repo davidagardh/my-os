@@ -12,6 +12,7 @@ dnf5 install -y \
 	ansible-core \
 	btrbk \
 	NetworkManager-l2tp-gnome \
+	NetworkManager-strongswan-gnome \
 	distrobox \
 	fish \
 	lm_sensors \
@@ -23,7 +24,6 @@ dnf5 install -y \
 dnf5 remove -y toolbox
 
 /ctx/1password.sh
-/ctx/forticlient-vpn.sh
 
 cp /ctx/cosign.pub /etc/pki/davidagardh-cosign.pub
 rsync -r /ctx/root_files/ /
