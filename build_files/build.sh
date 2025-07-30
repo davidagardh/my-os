@@ -6,6 +6,12 @@ mkdir /var/opt /var/roothome
 
 ### Install packages
 
+# use negativo17 for 3rd party packages with higher priority than default
+dnf5 config-manager addrepo --from-repofile="https://negativo17.org/repos/fedora-multimedia.repo"
+dnf5 config-manager setopt fedora-multimedia.priority=90
+# Disable opneh264 since negativo17's ffmpeg-libs does it better
+dnf5 config-manager setopt fedora-cisco-openh264.enabled=0
+
 # Installs packages from fedora repos
 dnf5 install -y \
 	tmux \
@@ -19,6 +25,7 @@ dnf5 install -y \
 	wl-clipboard \
 	virt-manager \
 	vim \
+	ffmpeg-libs \
 	fzf
 
 dnf5 remove -y toolbox
