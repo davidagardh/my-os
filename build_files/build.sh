@@ -22,6 +22,7 @@ dnf5 install -y \
 	distrobox \
 	fish \
 	lm_sensors \
+	lshw \
 	wl-clipboard \
 	virt-manager \
 	vim \
