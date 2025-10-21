@@ -23,6 +23,7 @@ dnf5 install -y \
 	fish \
 	lm_sensors \
 	lshw \
+	tcpdump \
 	wl-clipboard \
 	virt-manager \
 	vim \
