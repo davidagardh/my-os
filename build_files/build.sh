@@ -28,7 +28,8 @@ dnf5 install -y \
 	virt-manager \
 	vim \
 	ffmpeg-libs \
-	fzf
+	fzf \
+	subscription-manager
 
 dnf5 remove -y toolbox
 
