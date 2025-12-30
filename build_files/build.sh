@@ -39,5 +39,9 @@ cp /ctx/cosign.pub /etc/pki/davidagardh-cosign.pub
 rsync -r /ctx/root_files/ /
 rm /etc/profile.d/nano-default-editor.sh
 
+# Needed for LU VPN
+sed -i 's/^blacklist/#blacklist/' /etc/modprobe.d/l2tp_netlink-blacklist.conf /etc/modprobe.d/l2tp_ppp-blacklist.conf
+sudo dnf install -y xl2tpd && sudo dnf remove -y golang-github-katalix-l2tp
+
 /ctx/lint-fixes.sh
 
