@@ -31,3 +31,12 @@ d /var/log/libvirt 0750 root root - -
 d /var/log/libvirt/qemu 0750 root root - -
 EOF
 
+
+cat << EOF > /usr/lib/tmpfiles.d/rhsm.conf
+d /var/lib/rhsm 0750 root root - -
+d /var/lib/rhsm/cache 0750 root root - -
+d /var/lib/rhsm/facts 0750 root root - -
+d /var/lib/rhsm/packages 0750 root root - -
+d /var/lib/rhsm/repo_server_val 0750 root root - -
+EOF
+rm -r /var/spool/rhsm
