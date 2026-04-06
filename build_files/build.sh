@@ -28,7 +28,8 @@ dnf5 install -y \
 	tcpdump \
 	tmux \
 	vim \
-	virt-manager
+	virt-manager \
+	zoxide
 
 dnf5 remove -y toolbox
 
