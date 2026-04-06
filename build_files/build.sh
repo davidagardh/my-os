@@ -14,22 +14,21 @@ dnf5 config-manager setopt fedora-cisco-openh264.enabled=0
 
 # Installs packages from fedora repos
 dnf5 install -y \
-	tmux \
-	ansible-core \
-	btrbk \
 	NetworkManager-l2tp-gnome \
 	NetworkManager-strongswan-gnome \
+	ansible-core \
+	btrbk \
 	distrobox \
+	ffmpeg-libs \
 	fish \
+	fzf \
 	lm_sensors \
 	lshw \
+	subscription-manager \
 	tcpdump \
-	wl-clipboard \
-	virt-manager \
+	tmux \
 	vim \
-	ffmpeg-libs \
-	fzf \
-	subscription-manager
+	virt-manager
 
 dnf5 remove -y toolbox
 
