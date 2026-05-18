@@ -24,6 +24,7 @@ dnf5 install -y \
 	fzf \
 	lm_sensors \
 	lshw \
+	podman-compose \
 	subscription-manager \
 	tcpdump \
 	tmux \
