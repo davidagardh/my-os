@@ -17,6 +17,7 @@ dnf5 install -y \
 	NetworkManager-l2tp-gnome \
 	NetworkManager-strongswan-gnome \
 	ansible-core \
+	ddcutil \
 	btrbk \
 	distrobox \
 	ffmpeg-libs \
