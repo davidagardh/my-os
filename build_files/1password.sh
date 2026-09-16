@@ -26,9 +26,13 @@ ln -s /opt/1Password/1password /usr/bin/1password
 GID_ONEPASSWORD=1001
 # Any available value over 1000 should do
 GID_ONEPASSWORDCLI=1019
+GID_ONEPASSWORDMCP=1020
 
 chgrp "${GID_ONEPASSWORD}" /usr/lib/1Password/1Password-BrowserSupport
 chmod g+s /usr/lib/1Password/1Password-BrowserSupport
+
+chgrp "${GID_ONEPASSWORDMCP}" /usr/lib/1Password/1password-mcp
+chmod g+s /usr/lib/1Password/1password-mcp
 
 chgrp "${GID_ONEPASSWORDCLI}" /usr/bin/op
 chmod g+s /usr/bin/op
@@ -41,10 +45,9 @@ EOF
 cat >/usr/lib/sysusers.d/onepassword-cli.conf <<EOF
 g onepassword-cli ${GID_ONEPASSWORDCLI}
 EOF
-# remove the sysusers.d entries created by onepassword RPMs.
-# They don't magically set the GID like we need them to.
-rm -f /usr/lib/sysusers.d/30-rpmostree-pkg-group-onepassword.conf
-rm -f /usr/lib/sysusers.d/30-rpmostree-pkg-group-onepassword-cli.conf
+cat >/usr/lib/sysusers.d/onepassword-mcp.conf <<EOF
+g onepassword-mcp ${GID_ONEPASSWORDMCP}
+EOF
 
 # remove the sysusers.d entries created by onepassword RPMs.
 # They don't magically set the GID like we need them to.
