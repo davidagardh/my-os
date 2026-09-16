@@ -26,6 +26,8 @@ d /var/lib/libvirt/qemu/nvram 0751 qemu qemu - -
 d /var/lib/libvirt/qemu/ram 0751 qemu qemu - -
 d /var/lib/libvirt/qemu/save 0751 qemu qemu - -
 d /var/lib/libvirt/qemu/snapshot 0751 qemu qemu - -
+d /var/lib/libvirt/qemu/varstore 0751 qemu qemu - -
+d /var/lib/libvirt/secrets 0700 root root - -
 d /var/lib/swtpm-localca 0750 root root - -
 d /var/log/libvirt 0750 root root - -
 d /var/log/libvirt/qemu 0750 root root - -
