@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ouex pipefail
+
 # Install 1password repo
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 cat << EOF > /etc/yum.repos.d/1password.repo
@@ -37,6 +39,14 @@ chmod g+s /usr/lib/1Password/1password-mcp
 chgrp "${GID_ONEPASSWORDCLI}" /usr/bin/op
 chmod g+s /usr/bin/op
 
+# The RPM scriptlets have already added the groups to /etc/group with the
+# first free GIDs (1000 and up). Move them to the GIDs above so fresh installs,
+# which start from the image's /etc/group, match the files we just chgrp'd.
+# The MCP group goes first since it was given 1001.
+groupmod -g "${GID_ONEPASSWORDMCP}" onepassword-mcp
+groupmod -g "${GID_ONEPASSWORDCLI}" onepassword-cli
+groupmod -g "${GID_ONEPASSWORD}" onepassword
+
 # Dynamically create the required groups via sysusers.d
 # and set the GID based on the files we just chgrp'd
 cat >/usr/lib/sysusers.d/onepassword.conf <<EOF
@@ -48,11 +58,6 @@ EOF
 cat >/usr/lib/sysusers.d/onepassword-mcp.conf <<EOF
 g onepassword-mcp ${GID_ONEPASSWORDMCP}
 EOF
-
-# remove the sysusers.d entries created by onepassword RPMs.
-# They don't magically set the GID like we need them to.
-rm -f /usr/lib/sysusers.d/30-rpmostree-pkg-group-onepassword.conf
-rm -f /usr/lib/sysusers.d/30-rpmostree-pkg-group-onepassword-cli.conf
 
 # Register path symlink
 # We do this via tmpfiles.d so that it is created by the live system.
