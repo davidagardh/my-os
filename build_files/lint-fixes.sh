@@ -1,15 +1,11 @@
 #!/bin/bash
 
-echo 'u gluster 992:964 "GlusterFS daemons" /run/gluster /sbin/nologin' > /usr/lib/sysusers.d/gluster.conf
-echo 'g gluster 964' >> /usr/lib/sysusers.d/gluster.conf
-
-echo 'g libvirt 963' > /usr/lib/sysusers.d/libvirt.conf
-echo 'g qat 995' > /usr/lib/sysusers.d/qat.conf
+set -ouex pipefail
 
 rm -rf /var/lib/ipsec /var/lib/iscsi
-cat << EOF > /usr/lib/tmpfiles.d/libreswan.conf
+# libreswan's own libreswan.conf covers /run/pluto and /var/lib/ipsec/nss
+cat << EOF > /usr/lib/tmpfiles.d/libreswan-var.conf
 d /var/lib/ipsec 0700 root root - -
-d /var/lib/ipsec/nss 0700 root root - -
 EOF
 rm -rf /var/roothome/
 rm -rf /var/lib/rpm-state/ /var/lib/dnf/
@@ -17,7 +13,7 @@ rm -rf /var/lib/rpm-state/ /var/lib/dnf/
 cat << EOF > /usr/lib/tmpfiles.d/libvirt.conf
 d /var/lib/libvirt 0755 root root - -
 d /var/lib/libvirt/images 0711 root root - -
-h /var/lib/libvirt/images NODATACOW
+h /var/lib/libvirt/images - - - - +C
 d /var/lib/libvirt/boot 0711 root root - -
 d /var/lib/libvirt/dnsmasq 0755 root root - -
 d /var/lib/libvirt/filesystems 0711 root root - -

@@ -2,22 +2,22 @@
 
 # Purpose
 
-This repository builds a bootc compatible container image optimized for desktop linux use in just the way I like it. It's based on the [image-temlate repo](https://github.com/ublue-os/image-template) by the Universal Blue Project.
+This repository builds a bootc compatible container image optimized for desktop linux use in just the way I like it. It's based on the [image-template repo](https://github.com/ublue-os/image-template) by the Universal Blue Project.
 
-A GitHub workflow builds a new version of the container image every night and on changes to the repo. The image is signed with a private key and pushed to the GitHub Container Registry.
+A GitHub workflow builds a new version of the container image every night and on changes to the repo. The image is signed with a private key and pushed to quay.io.
 
 # How to use the image
 
 Start from a working installation of Silverblue (or similar distro that has bootc). Rebasing to this repo is done in two steps. The first step installs the image without verifying signatures, because those signatures would not be trusted. The second step enables image signature verification.
 
 ```bash
-bootc switch quay.io/davidagardh/atomic-test:latest
+bootc switch quay.io/davidagardh/my-os:latest
 ```
 
 Reboot
 
 ```bash
-bootc switch quay.io/davidagardh/atomic-test:latest --enforce-container-sigpolicy
+bootc switch quay.io/davidagardh/my-os:latest --enforce-container-sigpolicy
 ```
 
 # Understanding the repo

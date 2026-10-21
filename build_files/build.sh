@@ -9,7 +9,7 @@ mkdir /var/opt /var/roothome
 # use negativo17 for 3rd party packages with higher priority than default
 dnf5 config-manager addrepo --from-repofile="https://negativo17.org/repos/fedora-multimedia.repo"
 dnf5 config-manager setopt fedora-multimedia.priority=90
-# Disable opneh264 since negativo17's ffmpeg-libs does it better
+# Disable openh264 since negativo17's ffmpeg-libs does it better
 dnf5 config-manager setopt fedora-cisco-openh264.enabled=0
 
 # Installs packages from fedora repos
@@ -40,6 +40,8 @@ dnf5 remove -y toolbox
 cp /ctx/cosign.pub /etc/pki/davidagardh-cosign.pub
 rsync -r /ctx/root_files/ /
 rm /etc/profile.d/nano-default-editor.sh
+
+systemctl enable rpm-ostreed-automatic.timer
 
 # Needed for LU VPN
 sed -i 's/^blacklist/#blacklist/' /etc/modprobe.d/l2tp_netlink-blacklist.conf /etc/modprobe.d/l2tp_ppp-blacklist.conf
