@@ -7,6 +7,10 @@ echo 'g libvirt 963' > /usr/lib/sysusers.d/libvirt.conf
 echo 'g qat 995' > /usr/lib/sysusers.d/qat.conf
 
 rm -rf /var/lib/ipsec /var/lib/iscsi
+cat << EOF > /usr/lib/tmpfiles.d/libreswan.conf
+d /var/lib/ipsec 0700 root root - -
+d /var/lib/ipsec/nss 0700 root root - -
+EOF
 rm -rf /var/roothome/
 rm -rf /var/lib/rpm-state/ /var/lib/dnf/
 

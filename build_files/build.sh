@@ -15,7 +15,6 @@ dnf5 config-manager setopt fedora-cisco-openh264.enabled=0
 # Installs packages from fedora repos
 dnf5 install -y \
 	NetworkManager-l2tp-gnome \
-	NetworkManager-strongswan-gnome \
 	ansible-core \
 	ddcutil \
 	btrbk \
@@ -23,6 +22,7 @@ dnf5 install -y \
 	ffmpeg-libs \
 	fish \
 	fzf \
+	libreswan \
 	lm_sensors \
 	lshw \
 	podman-compose \
@@ -43,6 +43,7 @@ rm /etc/profile.d/nano-default-editor.sh
 
 # Needed for LU VPN
 sed -i 's/^blacklist/#blacklist/' /etc/modprobe.d/l2tp_netlink-blacklist.conf /etc/modprobe.d/l2tp_ppp-blacklist.conf
+sed -i 's/^\t#ikev1-policy=drop$/\tikev1-policy=accept/' /etc/ipsec.conf
 
 /ctx/lint-fixes.sh
 
