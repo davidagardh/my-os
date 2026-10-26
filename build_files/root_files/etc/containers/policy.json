@@ -15,6 +15,24 @@
                     }
                 }
             ],
+            "quay.io/davidagardh/agent-base": [
+                {
+                    "type": "sigstoreSigned",
+                    "keyPath": "/etc/pki/davidagardh-cosign.pub",
+                    "signedIdentity": {
+                        "type": "matchRepository"
+                    }
+                }
+            ],
+            "quay.io/davidagardh/agent-box": [
+                {
+                    "type": "sigstoreSigned",
+                    "keyPath": "/etc/pki/davidagardh-cosign.pub",
+                    "signedIdentity": {
+                        "type": "matchRepository"
+                    }
+                }
+            ],
             "": [
                 {
                     "type": "insecureAcceptAnything"
